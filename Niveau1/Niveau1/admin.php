@@ -100,11 +100,11 @@
                         <h3><?php echo $tag['alias'] ?></h3>
                         <p><?php echo $tag['id'] ?></p>
                         <nav>
-                            <a href="wall.php?user_id=123">Mur</a>
-                            | <a href="feed.php?user_id=123">Flux</a>
-                            | <a href="settings.php?user_id=123">Paramètres</a>
-                            | <a href="followers.php?user_id=123">Suiveurs</a>
-                            | <a href="subscriptions.php?user_id=123">Abonnements</a>
+                            <a href="<?php echo "wall.php?user_id=" . $tag['id'] ?>">Mur</a>
+                            | <a href="<?php echo "feed.php?user_id=" . $tag['id'] ?>">Flux</a>
+                            | <a href="<?php echo "settings.php?user_id=" . $tag['id'] ?>">Paramètres</a>
+                            | <a href="<?php echo "followers.php?user_id=" . $tag['id'] ?>">Suiveurs</a>
+                            | <a href="<?php echo "subscriptions.php?user_id=" . $tag['id'] ?>">Abonnements</a>
                         </nav>
                     </article>
                 <?php } ?>

@@ -36,7 +36,7 @@
             <main>
                 <!-- L'article qui suit est un exemple pour la présentation et 
                   @todo: doit etre retiré -->
-                <article>
+                <!-- <article>
                     <h3>
                         <time datetime='2020-02-01 11:12:13' >31 février 2010 à 11h12</time>
                     </h3>
@@ -53,7 +53,7 @@
                         <a href="">#lorem</a>,
                         <a href="">#piscitur</a>,
                     </footer>
-                </article>               
+                </article>                -->
 
                 <?php
                 /*
@@ -111,7 +111,7 @@
                 {
                     //la ligne ci-dessous doit etre supprimée mais regardez ce 
                     //qu'elle affiche avant pour comprendre comment sont organisées les information dans votre 
-                    echo "<pre>" . print_r($post, 1) . "</pre>";
+                    // echo "<pre>" . print_r($post, 1) . "</pre>";
 
                     // @todo : Votre mission c'est de remplacer les AREMPLACER par les bonnes valeurs
                     // ci-dessous par les bonnes valeurs cachées dans la variable $post 
@@ -129,7 +129,13 @@
                         </div>
                         <footer>
                             <small>♥<?php echo $post['like_number'] ?></small>
-                            <a href="">#<?php echo $post['taglist'] ?></a>,
+                            <?php $str = $post['taglist'];
+                                  $delimiter = ",";
+                                  $parts = explode($delimiter, $str);
+                                    for ($i=0; $i<count($parts); $i++) {
+                                  echo '<a href="#">#' . $parts[$i] . ' ' . '</a>';
+                                  } 
+                            ?>
                         </footer>
                     </article>
                     <?php

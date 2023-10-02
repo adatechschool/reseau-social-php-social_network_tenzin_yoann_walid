@@ -85,15 +85,15 @@
                     <h3>Mes paramètres</h3>
                     <dl>
                         <dt>Pseudo</dt>
-                        <dd>Félicie</dd>
+                        <dd><?= $user['alias'] ?></dd>
                         <dt>Email</dt>
-                        <dd>felicie@test.org</dd>
+                        <dd><?= $user['email'] ?></dd>
                         <dt>Nombre de message</dt>
-                        <dd>42</dd>
+                        <dd><?= $user['totalpost'] ?></dd>
                         <dt>Nombre de "J'aime" donnés </dt>
-                        <dd>12</dd>
+                        <dd><?= $user['totalgiven'] ?></dd>
                         <dt>Nombre de "J'aime" reçus</dt>
-                        <dd>53</dd>
+                        <dd><?= $user['totalrecieved'] ?></dd>
                     </dl>
 
                 </article>
