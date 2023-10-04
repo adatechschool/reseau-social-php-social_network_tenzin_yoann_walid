@@ -53,13 +53,31 @@
                 $lesInformations = $mysqli->query($laQuestionEnSql);
                 // Etape 4: à vous de jouer
                 //@todo: faire la boucle while de parcours des abonnés et mettre les bonnes valeurs ci dessous 
-                ?>
-                <article>
-                    <img src="user.jpg" alt="blason"/>
-                    <h3>Béatrice</h3>
-                    <p>id:321</p>
-                </article>
-            </main>
-        </div>
-    </body>
+                    
+// Vérification
+if ( ! $lesInformations)
+{
+    echo "<article>";
+    echo("Échec de la requete : " . $mysqli->error);
+    echo("<p>Indice: Vérifiez la requete  SQL suivante dans phpmyadmin<code>$laQuestionEnSql</code></p>");
+    exit();
+}
+
+while ($post = $lesInformations->fetch_assoc())
+{
+   
+    ?>
+    <article>
+    <img src="user.jpg" alt="blason"/>
+    <h3><?php echo $post['alias'] ?></h3>
+    <p><?php echo $post['id'] ?></p>                    
+ </article>
+    <?php
+    // avec le <?php ci-dessus on retourne en mode php 
+}// cette accolade ferme et termine la boucle while ouverte avant.
+?>
+
+</main>
+</div>
+</body>
 </html>
