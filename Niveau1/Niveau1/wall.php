@@ -70,9 +70,9 @@ session_start();
         </aside>
         <main>
             <?php
-                if ($_SESSION['connected_id'] == $userId) { 
-                if (isset($_POST['button']) 
-            ?>
+            if ($_SESSION['connected_id'] == $userId) { 
+                if (isset($_POST['button']))
+                ?>
                 
 
                 <form action=<?php echo "wall.php?user_id=" . $_SESSION['connected_id'] ?> method="post">
