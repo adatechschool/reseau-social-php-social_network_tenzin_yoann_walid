@@ -71,7 +71,7 @@ session_start();
         <main>
             <?php
             if ($_SESSION['connected_id'] == $userId) { 
-                if (isset($_POST['button']) 
+                if (isset($_POST['button']))
                 ?>
                 
 
