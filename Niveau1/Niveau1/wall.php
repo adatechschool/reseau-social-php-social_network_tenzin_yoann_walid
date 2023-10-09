@@ -70,17 +70,43 @@ session_start();
         </aside>
         <main>
             <?php
-            if ($_SESSION['connected_id'] == $userId) { 
-                if (isset($_POST['button']))
-                ?>
+                $enCoursDeTraitement = isset($_POST['auteur']);
+                if ($enCoursDeTraitement) {
+                    // on ne fait ce qui suit que si un formulaire a été soumis.
+                    // Etape 2: récupérer ce qu'il y a dans le formulaire @todo: c'est là que votre travaille se situe
+                    // observez le résultat de cette ligne de débug (vous l'effacerez ensuite)
+                    echo "<pre>" . print_r($_POST, 1) . "</pre>";
+                    echo "<pre>" . print_r($_POST['auteur'], 1) . "</pre>";
+                    // et complétez le code ci dessous en remplaçant les ???
+                    $authorId = $_POST['user_id'];
+                    $postContent = $_POST['message'];
+            if ($_SESSION['connected_id'] == $userId) {
+            
+                if (isset($_POST['button'])){
                 
 
+                $lInstructionSql = "INSERT INTO posts "
+                . "(id, user_id, content, created, parent_id) "
+                . "VALUES (NULL, "
+                . $authorId . ", '"
+                . $postContent . "', "
+                . "NOW(), "
+                . "NULL);";
+            echo $lInstructionSql;
+                }
+            }
+            ?>
+
+
                 <form action=<?php echo "wall.php?user_id=" . $_SESSION['connected_id'] ?> method="post">
+                <input type='hidden' name='auteur' value='<?php echo $userId; ?>'>
                     <input type="text">
                     <input type="submit" name="button">
-
-
                 </form>
+
+
+
+
             <?php } ?>
             <?php
             /**
