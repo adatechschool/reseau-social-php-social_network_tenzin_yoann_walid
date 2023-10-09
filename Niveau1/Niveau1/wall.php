@@ -66,43 +66,60 @@ session_start();
                 <p>Sur cette page vous trouverez tous les message de l'utilisatrice : <?php echo $user['alias'] ?>
                     (n° <?php echo $userId ?>)
                 </p>
+                
             </section>
         </aside>
         <main>
+            <form action=<?php echo "followers.php?user_id=" . $_SESSION['connected_id']?> method="post">
+                <input type="submit" name="submit" value="Sabonner">
+            </form>
+
+            <form action=<?php echo "wall.php?user_id=" . $_SESSION['connected_id'] ?> method="post">
+                <input type='hidden' name='auteur' value='<?php echo $userId; ?>'>
+                    <input type="text" name="content">
+                    <input type="submit" name="button">
+            </form>
+            
+            
             <?php
+            if ($_SESSION['connected_id'] == $userId) {
                 $enCoursDeTraitement = isset($_POST['auteur']);
-                if ($enCoursDeTraitement) {
+                    if ($enCoursDeTraitement) {
                     // on ne fait ce qui suit que si un formulaire a été soumis.
                     // Etape 2: récupérer ce qu'il y a dans le formulaire @todo: c'est là que votre travaille se situe
                     // observez le résultat de cette ligne de débug (vous l'effacerez ensuite)
                     echo "<pre>" . print_r($_POST, 1) . "</pre>";
                     echo "<pre>" . print_r($_POST['auteur'], 1) . "</pre>";
                     // et complétez le code ci dessous en remplaçant les ???
-                    $authorId = $_POST['user_id'];
-                    $postContent = $_POST['message'];
-            if ($_SESSION['connected_id'] == $userId) {
-            
-                if (isset($_POST['button'])){
-                
-
-                $lInstructionSql = "INSERT INTO posts "
-                . "(id, user_id, content, created, parent_id) "
-                . "VALUES (NULL, "
-                . $authorId . ", '"
-                . $postContent . "', "
-                . "NOW(), "
-                . "NULL);";
-            echo $lInstructionSql;
+                    $authorId = $_SESSION['connected_id'];
+                    $postContent = $_POST['content'];
+                    
+                    if (isset($_POST['button'])){
+                        $lInstructionSql = "INSERT INTO posts "
+                        . "(id, user_id, content, created, parent_id) "
+                        . "VALUES (NULL, "
+                        . $authorId . ", '"
+                        . $postContent . "', "
+                        . "NOW(), "
+                        . "NULL);";
+                        // echo $lInstructionSql;
+                        $result = $mysqli->query($lInstructionSql);
                 }
+
+                if (isset($_POST['submit'])){
+                    $lInstructionSql2 = "INSERT INTO followers "
+                    . "(id, followed_user_id, following_user_id) "
+                    . "VALUES (NULL, "
+                    . $userId . ", '"
+                    . $authorId . "')";
+                echo $lInstructionSql2;
+                $result2 = $mysqli->query($lInstructionSql2);
+                echo "bonjour";
+                }
+                echo "bonjour2";
             }
+            
             ?>
-
-
-                <form action=<?php echo "wall.php?user_id=" . $_SESSION['connected_id'] ?> method="post">
-                <input type='hidden' name='auteur' value='<?php echo $userId; ?>'>
-                    <input type="text">
-                    <input type="submit" name="button">
-                </form>
 
 
 
