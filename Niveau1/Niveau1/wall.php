@@ -118,7 +118,7 @@ session_start();
              * Etape 3: récupérer tous les messages de l'utilisatrice
              */
             $laQuestionEnSql = "
-                    SELECT posts.content, posts.created, users.alias as author_name, 
+                    SELECT posts.id as id, posts.content, posts.created, users.alias as author_name, 
                     COUNT(likes.id) as like_number, GROUP_CONCAT(DISTINCT tags.label) AS taglist 
                     FROM posts
                     JOIN users ON  users.id=posts.user_id
@@ -139,7 +139,7 @@ session_start();
              */
             while ($post = $lesInformations->fetch_assoc()) {
 
-                // echo "<pre>" . print_r($post, 1) . "</pre>";
+            //  echo "<pre>" . print_r($post, 1) . "</pre>";
             ?>
                 <article>
                     <h3>
@@ -150,7 +150,22 @@ session_start();
                         <p><?php echo $post['content'] ?></p>
                     </div>
                     <footer>
-                        <small>♥ <?php echo $post['like_number'] ?> </small>
+                        <?php if ($_SESSION['connected_id'] != $userId) {
+                            if (isset($_POST['likes'])){
+                                $lInstructionSql3 = "INSERT INTO likes "
+                                . "(id, user_id, post_id) "
+                                . "VALUES (NULL, '"
+                                . $_SESSION['connected_id'] . "', '"
+                                . $_POST['post_id'] . "')";
+                                echo $lInstructionSql3;
+                                $result3 = $mysqli->query($lInstructionSql3);
+                        }?>
+                        <small><form method="post">
+                            <input type="hidden" name="post_id" value=<?php $post['id'] ?> >
+                            <input type="submit" name="likes" value="♥ J'aime">
+                        </form><?php echo $post['like_number'] ?> </small>
+                        <?php } ?>
+                        
                         <?php
                         $str = $post['taglist'];
                         $delimeter = ",";
