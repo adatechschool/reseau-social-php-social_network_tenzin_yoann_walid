@@ -67,7 +67,6 @@ session_start();
                     (n° <?php echo $userId ?>)
                 </p> 
                 <?php if ($_SESSION['connected_id'] != $userId) {
-                    echo "bonjour";
                 if (isset($_POST['submit'])){
                 $lInstructionSql2 = "INSERT INTO followers "
                 . "(id, followed_user_id, following_user_id) "
