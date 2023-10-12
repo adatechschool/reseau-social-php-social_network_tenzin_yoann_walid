@@ -8,18 +8,20 @@ session_start();
     <meta charset="utf-8">
     <title>ReSoC - Inscription</title>
     <meta name="author" content="Julien Falconnet">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style 2.css" />
 </head>
 
 <body>
-    <header>
-        <img src="resoc.jpg" alt="Logo de notre réseau social" />
+    <!-- <header>
+        <img src="image/png-k.png" alt="Logo de notre réseau social" />
         <nav id="menu">
 
             <a href="news.php?user_id=<?php echo $_SESSION['connected_id'] ?>">Actualités</a>
             <a href="wall.php?user_id=<?php echo $_SESSION['connected_id'] ?> ">Mur</a>
             <a href="feed.php?user_id=<?php echo $_SESSION['connected_id'] ?> ">Flux</a>
             <a href="tags.php?tag_id=<?php echo $_SESSION['connected_id'] ?> ">Mots-clés</a>
+            <input id="searchbar" onkeyup="search_tag()" type="text"
+            name="search" placeholder="Search tag..">
         </nav>
         <nav id="user">
             <a href="#">Profil</a>
@@ -30,7 +32,7 @@ session_start();
             </ul>
 
         </nav>
-    </header>
+    </header> -->
 
     <div id="wrapper">
 
@@ -101,6 +103,10 @@ session_start();
             </article>
         </main>
     </div>
+    <div class="image">
+
+<img src="image1.webp" class="cube" alt="">
+</div>
 </body>
 
 </html>

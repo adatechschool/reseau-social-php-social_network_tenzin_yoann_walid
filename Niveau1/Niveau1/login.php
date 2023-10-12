@@ -8,11 +8,11 @@ session_start();
     <meta charset="utf-8">
     <title>ReSoC - Connexion</title>
     <meta name="author" content="Julien Falconnet">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style 2.css" />
 </head>
 
 <body>
-    <header>
+    <!-- <header>
         <img src="resoc.jpg" alt="Logo de notre réseau social" />
         <nav id="menu">
 
@@ -30,13 +30,14 @@ session_start();
             </ul>
 
         </nav>
-    </header>
+    </header> -->
 
+    
     <div id="wrapper">
-
-        <aside>
-            <h2>Présentation</h2>
-            <p>Bienvenu sur notre réseau social.</p>
+    <!-- <h2>Présentation</h2> -->
+    <aside>
+        <p class="para">  Bienvenu sur notre blog <strong>Manga Paradise</strong> </p>
+        <img class="mangas" src="image/mangas.png" alt="" >
         </aside>
         <main>
             <article>
@@ -85,15 +86,15 @@ session_start();
                     }
                 }
                 ?>
-                <form action="login.php" method="post">
+                <form action="authentifier.php" method="post">
                     <input type='hidden' name='user_id' value='<?php echo $_POST['auteur'] ?>'>
                     <dl>
                         <dt><label for='email'>E-Mail</label></dt>
-                        <dd><input type='email' name='email'></dd>
+                        <dd><input type='email' name='email' required></dd>
                         <dt><label for='motpasse'>Mot de passe</label></dt>
-                        <dd><input type='password' name='motpasse'></dd>
+                        <dd><input type='password' name='motpasse' required></dd>
                     </dl>
-                    <input type='submit'>
+                    <input type='submit' value="se connecter">
                 </form>
                 <p>
                     Pas de compte?
@@ -103,6 +104,14 @@ session_start();
             </article>
         </main>
     </div>
+    <div class="image">
+
+<img src="image/image1.webp" class="cube1" alt="">
+<img src="image/image1.webp" class="cube2" alt="">
+<img src="image/image3.webp" class="carre" alt="">
+<img src="image/image2.webp" class="carre2" alt="">
+<img src="image/image2.webp" class="carre3" alt="">
+</div>
 </body>
 
 </html>

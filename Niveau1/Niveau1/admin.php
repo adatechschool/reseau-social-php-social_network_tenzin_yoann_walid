@@ -8,18 +8,21 @@ session_start();
     <meta charset="utf-8">
     <title>ReSoC - Administration</title>
     <meta name="author" content="Julien Falconnet">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style 2.css" />
 </head>
 
 <body>
     <header>
-        <img src="resoc.jpg" alt="Logo de notre réseau social" />
+        <img src="image/png-k.png" alt="Logo de notre réseau social" />
         <nav id="menu">
 
             <a href="news.php?user_id=<?php echo $_SESSION['connected_id'] ?>">Actualités</a>
             <a href="wall.php?user_id=<?php echo $_SESSION['connected_id'] ?> ">Mur</a>
             <a href="feed.php?user_id=<?php echo $_SESSION['connected_id'] ?> ">Flux</a>
             <a href="tags.php?tag_id=<?php echo $_SESSION['connected_id'] ?> ">Mots-clés</a>
+            <a href="usurpedpost.php?tag_id=<?php echo $_SESSION['connected_id'] ?> ">message</a>
+            <input id="searchbar" onkeyup="search_tag()" type="text"
+            name="search" placeholder="Search tag..">
         </nav>
         <nav id="user">
             <a href="#">Profil</a>
@@ -27,6 +30,7 @@ session_start();
                 <li><a href="settings.php?user_id=<?php echo $_SESSION['connected_id'] ?> ">Paramètres</a></li>
                 <li><a href="followers.php?user_id=<?php echo $_SESSION['connected_id'] ?> ">Mes suiveurs</a></li>
                 <li><a href="subscriptions.php?user_id=<?php echo $_SESSION['connected_id'] ?> ">Mes abonnements</a></li>
+                <li><a href="deconnexion.php?user_id=<?php echo $_SESSION['connected_id'] ?> ">Se déconnecter</a></li>
             </ul>
 
         </nav>
@@ -101,6 +105,16 @@ session_start();
             <?php } ?>
         </main>
     </div>
+    <div class="image">
+
+<img src="image/image1.webp" class="cube1" alt="">
+<img src="image/image1.webp" class="cube2" alt="">
+<img src="image/image3.webp" class="carre" alt="">
+<img src="image/image2.webp" class="carre2" alt="">
+<img src="image/image2.webp" class="carre3" alt="">
+</div>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <script src="index.js"></script>
 </body>
 
 </html>

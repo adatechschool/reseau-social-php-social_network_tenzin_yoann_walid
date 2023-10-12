@@ -8,18 +8,24 @@ session_start();
     <meta charset="utf-8">
     <title>ReSoC - Les message par mot-clé</title>
     <meta name="author" content="Julien Falconnet">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style 2.css" />
 </head>
 
 <body>
     <header>
-        <img src="resoc.jpg" alt="Logo de notre réseau social" />
+    <a href='admin.php'><img src="image/png-k.png" alt="Logo de notre réseau social" /></a>
+
         <nav id="menu">
 
             <a href="news.php?user_id=<?php echo $_SESSION['connected_id'] ?>">Actualités</a>
             <a href="wall.php?user_id=<?php echo $_SESSION['connected_id'] ?> ">Mur</a>
             <a href="feed.php?user_id=<?php echo $_SESSION['connected_id'] ?> ">Flux</a>
             <a href="tags.php?tag_id=<?php echo $_SESSION['connected_id'] ?> ">Mots-clés</a>
+            <a href="usurpedpost.php?tag_id=<?php echo $_SESSION['connected_id'] ?> ">message</a>
+
+            <input id="searchbar" onkeyup="search_tag()" type="text"
+            name="search" placeholder="Search tag..">
+            
         </nav>
         <nav id="user">
             <a href="#">Profil</a>
@@ -27,10 +33,13 @@ session_start();
                 <li><a href="settings.php?user_id=<?php echo $_SESSION['connected_id'] ?> ">Paramètres</a></li>
                 <li><a href="followers.php?user_id=<?php echo $_SESSION['connected_id'] ?> ">Mes suiveurs</a></li>
                 <li><a href="subscriptions.php?user_id=<?php echo $_SESSION['connected_id'] ?> ">Mes abonnements</a></li>
+                <li><a href="deconnexion.php?user_id=<?php echo $_SESSION['connected_id'] ?> ">Se déconnecter</a></li>
+
             </ul>
 
         </nav>
     </header>
+  
     <div id="wrapper">
         <?php
         /**
@@ -60,9 +69,9 @@ session_start();
             //@todo: afficher le résultat de la ligne ci dessous, remplacer XXX par le label et effacer la ligne ci-dessous
             // echo "<pre>" . print_r($tag, 1) . "</pre>";
             ?>
-            <img src="user.jpg" alt="Portrait de l'utilisatrice" />
+            <img src="Haganezuka.Hotaru.png" alt="Portrait de l'utilisatrice" />
             <section>
-                <h3>Présentation</h3>
+                <h3>Hotaru 🈴 ㊙️</h3>
                 <p>Sur cette page vous trouverez les derniers messages comportant
                     le mot-clé <?php echo $tag['label'] ?>
                     (n° <?php echo $tagId ?>)
@@ -71,6 +80,14 @@ session_start();
             </section>
         </aside>
         <main>
+        <div class="image">
+
+<img src="image/image1.webp" class="cube1" alt="">
+<img src="image/image1.webp" class="cube2" alt="">
+<img src="image/image3.webp" class="carre" alt="">
+<img src="image/image2.webp" class="carre2" alt="">
+<img src="image/image2.webp" class="carre3" alt="">
+</div>
             <?php
             /**
              * Etape 3: récupérer tous les messages avec un mot clé donné
@@ -112,7 +129,7 @@ session_start();
                         <p><?php echo $post['content'] ?></p>
                     </div>
                     <footer>
-                        <small>♥ <?php echo $post['like_number'] ?> </small>
+                        <small>❤️ <?php echo $post['like_number'] ?> </small>
                         <?php
                         $str = $post['taglist'];
                         $delimeter = ",";
@@ -128,6 +145,7 @@ session_start();
 
         </main>
     </div>
+   <script src="index.js"></script>
 </body>
 
 </html>
