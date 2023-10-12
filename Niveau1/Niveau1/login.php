@@ -36,7 +36,7 @@ session_start();
     <div id="wrapper">
     <!-- <h2>Présentation</h2> -->
     <aside>
-        <p class="para">  Bienvenu sur notre blog <strong>Manga Paradise</strong> </p>
+        <p class="para">  Bienvenu sur notre blog Manga Paradise </p>
         <img class="mangas" src="image/mangas.png" alt="" >
         </aside>
         <main>
